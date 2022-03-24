@@ -1,4 +1,8 @@
 import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+
+import GitHubContributorCard from './GitHubContributorCard';
 
 const styles = StyleSheet.create({
   container: {
@@ -6,6 +10,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#121D59',
     paddingHorizontal: 20,
+    paddingVertical: 10,
     width: '100%',
   },
   stretch: {
@@ -19,15 +24,13 @@ const styles = StyleSheet.create({
   },
   subheading: {
     color: 'white',
-    fontSize: 20,
+    fontSize: 18,
     paddingTop: 10,
     paddingBottom: 6,
   },
   leftDivider: {
     backgroundColor: 'white',
     height: 2,
-    marginBottom: 8,
-    marginTop: 5,
     width: '60%',
   },
   column: {
@@ -37,17 +40,28 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     width: '100%',
-    alignContent: 'space-between',
+    justifyContent: 'space-between',
   },
-  width50: {
+  left: {
     width: '50%',
+  },
+  right: {
+    width: '50%',
+    alignItems: 'flex-end',
   },
   rightDivider: {
     backgroundColor: 'white',
     height: 2,
-    marginBottom: 10,
-    marginTop: 5,
     width: '40%',
+  },
+  communityLogo: {
+    paddingVertical: 15,
+    marginRight: 10,
+  },
+  copyright: {
+    color: 'white',
+    fontSize: 15,
+    paddingVertical: 10,
   },
 });
 
@@ -57,7 +71,7 @@ const Footer = () => {
       <Image style={styles.stretch} source={require('../assets/adaptive-icon.png')} />
       <View style={styles.column}>
         <View style={styles.row}>
-          <View style={styles.width50}>
+          <View style={styles.left}>
             <Text style={styles.heading}>Docs</Text>
             <View style={styles.leftDivider}></View>
             <Pressable>
@@ -68,7 +82,7 @@ const Footer = () => {
             </Pressable>
           </View>
 
-          <View style={styles.width50}>
+          <View style={styles.right}>
             <Text style={styles.heading}>More</Text>
             <View style={styles.rightDivider}></View>
             <Pressable>
@@ -77,10 +91,24 @@ const Footer = () => {
           </View>
         </View>
 
-        <View style={styles.width50}>
+        <View style={styles.left}>
           <Text style={styles.heading}>Community</Text>
           <View style={styles.leftDivider}></View>
+          <View style={{ flexDirection: 'row' }}>
+            <Pressable>
+              <AntDesign name="github" style={styles.communityLogo} size={24} color="white" />
+            </Pressable>
+            <Pressable>
+              <Ionicons name="logo-slack" style={styles.communityLogo} size={24} color="white" />
+            </Pressable>
+          </View>
         </View>
+      </View>
+      <GitHubContributorCard />
+      <View>
+        <Text style={styles.copyright}>
+          Copyright © 2022 Seneca's Centre for Development of Open Technology
+        </Text>
       </View>
     </View>
   );

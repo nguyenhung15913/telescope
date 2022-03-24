@@ -17,7 +17,6 @@ const HomeScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <Banner navigateToContact={navigateToContact} />
-      <Footer />
     </SafeAreaView>
   );
 };
