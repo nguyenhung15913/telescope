@@ -1,4 +1,4 @@
-import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
+import { View, Text, Image, StyleSheet, Pressable, Linking } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -74,10 +74,22 @@ const Footer = () => {
           <View style={styles.left}>
             <Text style={styles.heading}>Docs</Text>
             <View style={styles.leftDivider}></View>
-            <Pressable>
+            <Pressable
+              onPress={() =>
+                Linking.openURL(
+                  'https://github.com/Seneca-CDOT/telescope/blob/master/docs/environment-setup.md'
+                )
+              }
+            >
               <Text style={styles.subheading}>Get Started</Text>
             </Pressable>
-            <Pressable>
+            <Pressable
+              onPress={() =>
+                Linking.openURL(
+                  'https://github.com/Seneca-CDOT/telescope/blob/master/docs/CONTRIBUTING.md'
+                )
+              }
+            >
               <Text style={styles.subheading}>Contribute</Text>
             </Pressable>
           </View>
@@ -85,7 +97,11 @@ const Footer = () => {
           <View style={styles.right}>
             <Text style={styles.heading}>More</Text>
             <View style={styles.rightDivider}></View>
-            <Pressable>
+            <Pressable
+              onPress={() =>
+                Linking.openURL('https://wiki.cdot.senecacollege.ca/wiki/Planet_CDOT_Feed_List')
+              }
+            >
               <Text style={styles.subheading}>Planet CDOT Feed List</Text>
             </Pressable>
           </View>
@@ -95,10 +111,14 @@ const Footer = () => {
           <Text style={styles.heading}>Community</Text>
           <View style={styles.leftDivider}></View>
           <View style={{ flexDirection: 'row' }}>
-            <Pressable>
+            <Pressable onPress={() => Linking.openURL('https://github.com/Seneca-CDOT/telescope')}>
               <AntDesign name="github" style={styles.communityLogo} size={24} color="white" />
             </Pressable>
-            <Pressable>
+            <Pressable
+              onPress={() =>
+                Linking.openURL('https://seneca-open-source.slack.com/archives/CS5DGCAE5')
+              }
+            >
               <Ionicons name="logo-slack" style={styles.communityLogo} size={24} color="white" />
             </Pressable>
           </View>
