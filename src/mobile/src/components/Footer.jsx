@@ -85,7 +85,7 @@ const Footer = () => {
             <Pressable
               onPress={() =>
                 Linking.openURL(
-                  'https://github.com/Seneca-CDOT/telescope/blob/master/src/docs/docs/contributing/CONTRIBUTING.md'
+                  'https://github.com/Seneca-CDOT/telescope/blob/master/src/docs/docs/contributing/CONTRIBUTING'
                 )
               }
             >
