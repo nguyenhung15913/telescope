@@ -1,67 +1,66 @@
 import { View, Text, Image, StyleSheet, Pressable, Linking } from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
-import { Ionicons } from '@expo/vector-icons';
+import { AntDesign, Ionicons } from '@expo/vector-icons';
 
 import GitHubContributorCard from './GitHubContributorCard';
 
 const styles = StyleSheet.create({
-  container: {
+  column: {
     flexDirection: 'column',
+    width: '100%',
+  },
+  communityLogo: {
+    marginRight: 10,
+    paddingVertical: 15,
+  },
+  container: {
     alignItems: 'center',
     backgroundColor: '#121D59',
+    flexDirection: 'column',
     paddingHorizontal: 20,
     paddingVertical: 10,
     width: '100%',
   },
-  stretch: {
-    width: 150,
-    height: 150,
+  copyright: {
+    color: 'white',
+    fontSize: 15,
+    paddingVertical: 10,
   },
   heading: {
     color: 'white',
     fontSize: 25,
     textTransform: 'uppercase',
   },
-  subheading: {
-    color: 'white',
-    fontSize: 18,
-    paddingTop: 10,
-    paddingBottom: 6,
+  left: {
+    width: '50%',
   },
   leftDivider: {
     backgroundColor: 'white',
     height: 2,
     width: '60%',
   },
-  column: {
-    flexDirection: 'column',
-    width: '100%',
-  },
-  row: {
-    flexDirection: 'row',
-    width: '100%',
-    justifyContent: 'space-between',
-  },
-  left: {
-    width: '50%',
-  },
   right: {
-    width: '50%',
     alignItems: 'flex-end',
+    width: '50%',
   },
   rightDivider: {
     backgroundColor: 'white',
     height: 2,
     width: '40%',
   },
-  communityLogo: {
-    paddingVertical: 15,
-    marginRight: 10,
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
   },
-  copyright: {
+  stretch: {
+    height: 150,
+    width: 150,
+  },
+  subheading: {
     color: 'white',
-    fontSize: 15,
-    paddingVertical: 10,
+    fontSize: 18,
+    paddingBottom: 6,
+    paddingTop: 10,
   },
 });
 
@@ -73,11 +72,11 @@ const Footer = () => {
         <View style={styles.row}>
           <View style={styles.left}>
             <Text style={styles.heading}>Docs</Text>
-            <View style={styles.leftDivider}></View>
+            <View style={styles.leftDivider} />
             <Pressable
               onPress={() =>
                 Linking.openURL(
-                  'https://github.com/Seneca-CDOT/telescope/blob/master/docs/environment-setup.md'
+                  'https://github.com/Seneca-CDOT/telescope/blob/master/src/docs/docs/getting-started/environment-setup.md'
                 )
               }
             >
@@ -86,7 +85,7 @@ const Footer = () => {
             <Pressable
               onPress={() =>
                 Linking.openURL(
-                  'https://github.com/Seneca-CDOT/telescope/blob/master/docs/CONTRIBUTING.md'
+                  'https://github.com/Seneca-CDOT/telescope/blob/master/src/docs/docs/contributing/CONTRIBUTING.md'
                 )
               }
             >
@@ -96,7 +95,7 @@ const Footer = () => {
 
           <View style={styles.right}>
             <Text style={styles.heading}>More</Text>
-            <View style={styles.rightDivider}></View>
+            <View style={styles.rightDivider} />
             <Pressable
               onPress={() =>
                 Linking.openURL('https://wiki.cdot.senecacollege.ca/wiki/Planet_CDOT_Feed_List')
@@ -109,7 +108,7 @@ const Footer = () => {
 
         <View style={styles.left}>
           <Text style={styles.heading}>Community</Text>
-          <View style={styles.leftDivider}></View>
+          <View style={styles.leftDivider} />
           <View style={{ flexDirection: 'row' }}>
             <Pressable onPress={() => Linking.openURL('https://github.com/Seneca-CDOT/telescope')}>
               <AntDesign name="github" style={styles.communityLogo} size={24} color="white" />
