@@ -3,19 +3,19 @@ import React from 'react';
 
 const GitHubContributorCard = () => {
   const styles = StyleSheet.create({
-    container: {
-      width: '100%',
-      flexDirection: 'row',
-      alignItems: 'center',
-      backgroundColor: '#A0D1FB',
-      borderRadius: 5,
+    avatar: {
+      height: 50,
+      width: 50,
     },
     avatarContainer: {
       width: '30%',
     },
-    avatar: {
-      width: 50,
-      height: 50,
+    container: {
+      alignItems: 'center',
+      backgroundColor: '#A0D1FB',
+      borderRadius: 5,
+      flexDirection: 'row',
+      width: '100%',
     },
     content: {
       width: '70%',
