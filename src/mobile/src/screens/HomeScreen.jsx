@@ -1,10 +1,15 @@
-import { StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Banner from '../components/Banner/Banner';
+import Posts from '../components/Posts/Posts';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  scrollView: {
+    flexDirection: 'column',
+    width: '100%',
   },
 });
 
@@ -15,7 +20,10 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Banner navigateToContact={navigateToContact} />
+      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+        <Banner navigateToContact={navigateToContact} />
+        <Posts />
+      </ScrollView>
     </SafeAreaView>
   );
 };

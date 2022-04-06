@@ -43,6 +43,7 @@ const BannerText = () => {
       .then((quotes) => {
         const randomIndex = Math.floor(Math.random() * quotes.length);
         setStudentQuotes(quotes[randomIndex]);
+        console.log(quotes);
         return quotes;
       })
       .catch((err) => console.error(err));
@@ -52,12 +53,9 @@ const BannerText = () => {
     <View style={styles.container}>
       <Text style={styles.logo}>Telescope</Text>
       {studentQuotes ?? (
-        <Pressable
-          style={styles.studentQuote}
-          onPress={() => Linking.openURL(studentQuotes.blog_url)}
-        >
-          <Text style={styles.studentQuoteText}>"{studentQuotes.quote}"</Text>
-          <Text style={styles.studentQuoteText}> {studentQuotes.author_name}</Text>
+        <Pressable style={styles.studentQuote} onPress={() => Linking.openURL('google.com')}>
+          <Text style={styles.studentQuoteText}>"quote"</Text>
+          <Text style={styles.studentQuoteText}> author</Text>
         </Pressable>
       )}
     </View>
