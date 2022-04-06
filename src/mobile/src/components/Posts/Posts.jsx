@@ -1,9 +1,15 @@
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Timeline from './Timeline';
 
 const Posts = () => {
+  const styles = StyleSheet.create({
+    container: {
+      padding: 20,
+    },
+  });
+
   const [data, setData] = useState([]);
   useEffect(() => {
     axios
@@ -13,7 +19,7 @@ const Posts = () => {
   }, []);
 
   return (
-    <View>
+    <View style={styles.container}>
       <Timeline data={data} />
     </View>
   );
