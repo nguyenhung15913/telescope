@@ -1,8 +1,9 @@
 import { View, Text, useWindowDimensions, StyleSheet, Image } from 'react-native';
-import React, { useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import RenderHtml from 'react-native-render-html';
-import useState from 'react-usestateref';
+import useSWR from 'swr';
+
+const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const PostComponent = ({ url }) => {
   const styles = StyleSheet.create({
@@ -30,34 +31,22 @@ const PostComponent = ({ url }) => {
   });
 
   const { width } = useWindowDimensions();
-  const [post, setPost, postRef] = useState();
-  useEffect(() => {
-    axios
-      .get(url)
-      .then((data) => {
-        setPost(data.data);
-        return console.log(postRef.current);
-      })
-      .catch((error) => console.log(error));
-  }, []);
-  if (!postRef.current) {
-    return (
-      <View>
-        <Text>No post yet</Text>
-      </View>
-    );
-  }
+
+  const { data, error } = useSWR(url, fetcher);
+
+  if (error) return <Text>An error has occurred.</Text>;
+  if (!data) return <Text>Loading Post...</Text>;
   return (
     <View>
       <View style={styles.postHeader}>
         <Image style={styles.postAvatar} source={require('../../assets/adaptive-icon.png')} />
         <View style={styles.postInfo}>
-          <Text style={styles.postTitle}>{postRef.current.title}</Text>
-          <Text style={styles.postAuthor}>{postRef.current.feed.author}</Text>
+          <Text style={styles.postTitle}>{data.title}</Text>
+          <Text style={styles.postAuthor}>{data.feed.author}</Text>
         </View>
       </View>
 
-      <RenderHtml contentWidth={width} source={postRef.current} />
+      <RenderHtml contentWidth={width} source={data} />
     </View>
   );
 };
